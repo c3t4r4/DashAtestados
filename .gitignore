@@ -10,3 +10,8 @@
 *.docx
 
 *.xlsx
+*.app
+*.exe
+*64
+
+dist/*
