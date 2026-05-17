@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard de Atestados Médicos</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9Ijg4IiBmaWxsPSIjMEQxQjNFIi8+CiAgPHJlY3QgeD0iMTI0IiB5PSI3MiIgd2lkdGg9IjI2NCIgaGVpZ2h0PSIzMzIiIHJ4PSIxOCIgZmlsbD0iI0ZGRkZGRiIvPgogIDxwYXRoIGQ9Ik0zMjQgNzIgTDM4OCAxMzYgTDMyNCAxMzYgWiIgZmlsbD0iIzBEMUIzRSIgb3BhY2l0eT0iMC4xOCIvPgogIDxwYXRoIGQ9Ik0zMjQgNzIgTDMyNCAxMzYgTDM4OCAxMzYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0IwQkVDNSIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8cmVjdCB4PSIxNTYiIHk9IjExMiIgd2lkdGg9IjEzNiIgaGVpZ2h0PSIxMyIgcng9IjYiIGZpbGw9IiMxRjRFNzkiIG9wYWNpdHk9IjAuMjUiLz4KICA8cmVjdCB4PSIxNTYiIHk9IjEzNiIgd2lkdGg9IjEwMCIgaGVpZ2h0PSI5IiAgcng9IjQiIGZpbGw9IiMxRjRFNzkiIG9wYWNpdHk9IjAuMTUiLz4KICA8cmVjdCB4PSIxNDgiIHk9IjM2OCIgd2lkdGg9IjIxNiIgaGVpZ2h0PSI1IiByeD0iMi41IiBmaWxsPSIjMUY0RTc5IiBvcGFjaXR5PSIwLjE4Ii8+CiAgPHJlY3QgeD0iMTYwIiB5PSIyOTAiIHdpZHRoPSIzOCIgaGVpZ2h0PSI3OCIgcng9IjciIGZpbGw9IiMyRTc1QjYiLz4KICA8cmVjdCB4PSIyMTMiIHk9IjI0MCIgd2lkdGg9IjM4IiBoZWlnaHQ9IjEyOCIgcng9IjciIGZpbGw9IiMxNkEwODUiLz4KICA8cmVjdCB4PSIyNjYiIHk9IjIwMCIgd2lkdGg9IjM4IiBoZWlnaHQ9IjE2OCIgcng9IjciIGZpbGw9IiMyN0FFNjAiLz4KICA8cmVjdCB4PSIzMTkiIHk9IjI2MiIgd2lkdGg9IjM4IiBoZWlnaHQ9IjEwNiIgcng9IjciIGZpbGw9IiNGMzlDMTIiLz4KICA8cG9seWxpbmUgcG9pbnRzPSIxNzksMjY4IDIzMiwyMTggMjg1LDE3NiAzMzgsMjQwIiBmaWxsPSJub25lIiBzdHJva2U9IiM3OUMwRkYiIHN0cm9rZS13aWR0aD0iNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIwLjg1Ii8+CiAgPGNpcmNsZSBjeD0iMTc5IiBjeT0iMjY4IiByPSI3IiBmaWxsPSIjNzlDMEZGIi8+CiAgPGNpcmNsZSBjeD0iMjMyIiBjeT0iMjE4IiByPSI3IiBmaWxsPSIjNzlDMEZGIi8+CiAgPGNpcmNsZSBjeD0iMjg1IiBjeT0iMTc2IiByPSI3IiBmaWxsPSIjNzlDMEZGIi8+CiAgPGNpcmNsZSBjeD0iMzM4IiBjeT0iMjQwIiByPSI3IiBmaWxsPSIjNzlDMEZGIi8+CiAgPHJlY3QgeD0iMjk4IiB5PSIxMDAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIzMCIgcng9IjQiIGZpbGw9IiNFNzRDM0MiIG9wYWNpdHk9IjAuODUiLz4KICA8cmVjdCB4PSIyODgiIHk9IjExMCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjEwIiByeD0iNCIgZmlsbD0iI0U3NEMzQyIgb3BhY2l0eT0iMC44NSIvPgo8L3N2Zz4=">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ── Theme variables ── */
+  :root {
+    --azul-esc:  #1F4E79;
+    --azul-med:  #2E75B6;
+    --azul-clr:  #BDD7EE;
+    --verde:     #27AE60;
+    --vermelho:  #E74C3C;
+    --amarelo:   #F39C12;
+  }
+
+  [data-theme="dark"] {
+    --bg:         #0D1117;
+    --card-bg:    #161B22;
+    --card-bg2:   #1C2128;
+    --borda:      #30363D;
+    --texto:      #E6EDF3;
+    --texto-sub:  #8B949E;
+    --sombra:     rgba(0,0,0,0.5);
+    --hdr-bg:     #010409;
+    --table-even: #1C2128;
+    --table-hover:#2D333B;
+    --input-bg:   #0D1117;
+    --cinza-hdr:  #21262D;
+    --badge-cid-bg:  #1D3348;
+    --badge-cid-fg:  #79C0FF;
+    --badge-dias-bg: #3B2E00;
+    --badge-dias-fg: #F0B429;
+    --badge-alto-bg: #3B1219;
+    --badge-alto-fg: #FF7B72;
+    --overlap-bg: #161B22;
+  }
+
+  [data-theme="light"] {
+    --bg:         #F4F6F9;
+    --card-bg:    #FFFFFF;
+    --card-bg2:   #F7F9FC;
+    --borda:      #DEE2E6;
+    --texto:      #2C3E50;
+    --texto-sub:  #666666;
+    --sombra:     rgba(0,0,0,0.08);
+    --hdr-bg:     #1F4E79;
+    --table-even: #F7F9FC;
+    --table-hover:#E8F0FE;
+    --input-bg:   #FFFFFF;
+    --cinza-hdr:  #D9D9D9;
+    --badge-cid-bg:  #BDD7EE;
+    --badge-cid-fg:  #1F4E79;
+    --badge-dias-bg: #FFF3CD;
+    --badge-dias-fg: #856404;
+    --badge-alto-bg: #F8D7DA;
+    --badge-alto-fg: #721c24;
+    --overlap-bg: #FFFFFF;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg);
+    color: var(--texto);
+    font-size: 14px;
+    min-width: 1024px;
+    transition: background 0.25s, color 0.25s;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--hdr-bg);
+    color: white;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 62px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header h1 { font-size: 19px; font-weight: 700; letter-spacing: 0.4px; }
+  .header .subtitle { font-size: 11px; opacity: 0.65; margin-top: 3px; }
+  .header-actions { display: flex; gap: 10px; align-items: center; }
+
+  .btn-theme {
+    background: transparent;
+    color: rgba(255,255,255,0.85);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .btn-theme:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.5); color: white; }
+
+  .btn-refresh {
+    background: var(--verde);
+    color: white;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    transition: background 0.2s;
+  }
+  .btn-refresh:hover { background: #219a52; }
+  .btn-refresh.loading { background: #555; cursor: not-allowed; }
+
+  /* ── Layout ── */
+  .container { max-width: 1440px; margin: 0 auto; padding: 20px 24px; }
+
+  /* ── Filters ── */
+  .filters {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: flex-end;
+    box-shadow: 0 1px 5px var(--sombra);
+    margin-bottom: 20px;
+    border: 1px solid var(--borda);
+  }
+  .filter-group { display: flex; flex-direction: column; gap: 4px; }
+  .filter-group label { font-size: 11px; font-weight: 600; color: var(--texto-sub); text-transform: uppercase; letter-spacing: 0.4px; }
+  .filter-group select,
+  .filter-group input {
+    padding: 7px 10px;
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--texto);
+    background: var(--input-bg);
+    min-width: 130px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .filter-group select:focus,
+  .filter-group input:focus { border-color: var(--azul-med); }
+  .filter-group input { min-width: 210px; }
+  .btn-clear {
+    padding: 7px 14px;
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+    background: var(--input-bg);
+    font-size: 13px;
+    cursor: pointer;
+    color: var(--texto-sub);
+    transition: all 0.2s;
+    align-self: flex-end;
+  }
+  .btn-clear:hover { background: var(--card-bg2); color: var(--texto); }
+
+  /* ── KPIs ── */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .kpi-card {
+    color: white;
+    border-radius: 10px;
+    padding: 18px 16px;
+    box-shadow: 0 2px 10px var(--sombra);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: default;
+  }
+  .kpi-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--sombra); }
+  /* 1-Total  2-CID  3-Setor  4-Funcionário  5-Dias */
+  .kpi-card:nth-child(1) { background: linear-gradient(135deg,#2E75B6,#1a5a9a); }
+  .kpi-card:nth-child(2) { background: linear-gradient(135deg,#C0392B,#922B21); }
+  .kpi-card:nth-child(3) { background: linear-gradient(135deg,#CA6F1E,#A04000); }
+  .kpi-card:nth-child(4) { background: linear-gradient(135deg,#B7950B,#9A7D0A); }
+  .kpi-card:nth-child(5) { background: linear-gradient(135deg,#7D3C98,#5B2C6F); }
+  .kpi-label { font-size: 11px; font-weight: 600; opacity: 0.85; text-transform: uppercase; letter-spacing: 0.5px; }
+  .kpi-value { font-size: 28px; font-weight: 700; line-height: 1; word-break: break-word; }
+  .kpi-sub { font-size: 11px; opacity: 0.7; }
+
+  /* ── Charts ── */
+  .charts-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .chart-full { margin-bottom: 20px; }
+  .card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 1px 5px var(--sombra);
+    border: 1px solid var(--borda);
+    transition: background 0.25s, border-color 0.25s;
+  }
+  .card-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--azul-med);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--borda);
+  }
+  svg.chart { width: 100%; overflow: visible; }
+
+  /* SVG hover effect via CSS */
+  svg.chart path, svg.chart rect {
+    transition: filter 0.18s, opacity 0.18s;
+    cursor: pointer;
+  }
+  svg.chart path:hover, svg.chart rect:hover {
+    filter: brightness(1.35) drop-shadow(0 0 6px rgba(100,180,255,0.4));
+    opacity: 0.95;
+  }
+
+  /* ── SVG Tooltip ── */
+  .svg-tooltip {
+    position: fixed;
+    background: rgba(10,14,20,0.95);
+    color: #E6EDF3;
+    padding: 7px 14px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 600;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 2000;
+    white-space: nowrap;
+    border: 1px solid rgba(100,180,255,0.3);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+    letter-spacing: 0.2px;
+  }
+  .svg-tooltip.show { opacity: 1; }
+  [data-theme="light"] .svg-tooltip {
+    background: rgba(30,40,55,0.95);
+    border-color: rgba(46,117,182,0.4);
+  }
+
+  /* ── Overlaps ── */
+  .overlaps-section { margin-bottom: 20px; }
+  .overlaps-toggle {
+    background: var(--vermelho);
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    text-align: left;
+    transition: filter 0.2s;
+  }
+  .overlaps-toggle.none { background: var(--verde); }
+  .overlaps-toggle:hover { filter: brightness(0.88); }
+  .overlaps-toggle .badge {
+    background: rgba(255,255,255,0.2);
+    border-radius: 12px;
+    padding: 1px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-left: auto;
+  }
+  .overlaps-body { display: none; margin-top: 12px; }
+  .overlaps-body.open { display: block; }
+  .overlap-card {
+    background: var(--overlap-bg);
+    border: 1px solid var(--borda);
+    border-left: 4px solid var(--vermelho);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 4px var(--sombra);
+  }
+  .overlap-card.duplicado_exato { border-left-color: #8E44AD; }
+  .overlap-card.mesmo_dia_cid_diferente { border-left-color: var(--amarelo); }
+  .overlap-card.periodo_sobreposto { border-left-color: var(--vermelho); }
+  .overlap-tipo {
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.6px; margin-bottom: 5px;
+  }
+  .overlap-tipo.duplicado_exato { color: #A855F7; }
+  .overlap-tipo.mesmo_dia_cid_diferente { color: var(--amarelo); }
+  .overlap-tipo.periodo_sobreposto { color: #FF7B72; }
+  .overlap-desc { font-size: 13px; color: var(--texto); }
+  .overlap-records { margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .overlap-tag {
+    background: var(--card-bg2);
+    border: 1px solid var(--borda);
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 11px;
+    color: var(--texto-sub);
+  }
+
+  /* ── Table ── */
+  .table-section { margin-bottom: 20px; }
+  .table-toolbar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 12px; flex-wrap: wrap; gap: 10px;
+  }
+  .table-toolbar .info { font-size: 13px; color: var(--texto-sub); }
+  .btn-csv {
+    background: var(--azul-med); color: white; border: none;
+    padding: 7px 16px; border-radius: 6px; font-size: 12px;
+    font-weight: 600; cursor: pointer; transition: background 0.2s;
+  }
+  .btn-csv:hover { background: var(--azul-esc); }
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    background: var(--azul-esc); color: white; padding: 10px 12px;
+    text-align: left; font-weight: 600; white-space: nowrap;
+    cursor: pointer; user-select: none;
+  }
+  th:hover { background: #163d5e; }
+  th .sort-arrow { font-size: 10px; opacity: 0.6; margin-left: 3px; }
+  tr:nth-child(even) td { background: var(--table-even); }
+  tr:hover td { background: var(--table-hover); transition: background 0.15s; }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--borda); vertical-align: middle; }
+
+  .badge-cid {
+    display: inline-block; background: var(--badge-cid-bg); color: var(--badge-cid-fg);
+    border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 700;
+  }
+  .badge-dias {
+    display: inline-block; background: var(--badge-dias-bg); color: var(--badge-dias-fg);
+    border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 700;
+  }
+  .badge-dias.alto { background: var(--badge-alto-bg); color: var(--badge-alto-fg); }
+
+  /* ── Pagination ── */
+  .pagination {
+    display: flex; align-items: center; gap: 6px;
+    justify-content: center; margin-top: 16px; flex-wrap: wrap;
+  }
+  .page-btn {
+    padding: 6px 12px; border: 1px solid var(--borda); border-radius: 5px;
+    background: var(--card-bg); font-size: 12px; cursor: pointer;
+    transition: all 0.15s; color: var(--texto);
+  }
+  .page-btn:hover { background: var(--table-hover); border-color: var(--azul-med); }
+  .page-btn.active { background: var(--azul-med); color: white; border-color: var(--azul-med); font-weight: 700; }
+  .page-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+  /* ── Loading ── */
+  .loading-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+    display: none; align-items: center; justify-content: center; z-index: 999;
+  }
+  .loading-overlay.show { display: flex; }
+  .spinner {
+    width: 48px; height: 48px; border: 5px solid rgba(255,255,255,0.3);
+    border-top-color: var(--azul-med); border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── Toast ── */
+  .toast {
+    position: fixed; bottom: 24px; right: 24px;
+    background: #1C2128; color: #E6EDF3; padding: 12px 20px;
+    border-radius: 8px; font-size: 13px; z-index: 1001;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.5); border: 1px solid var(--borda);
+    transform: translateY(80px); opacity: 0; transition: all 0.3s;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast.error { background: #3B1219; border-color: var(--vermelho); color: #FF7B72; }
+
+  /* ── Sem Dados Banner ── */
+  .sem-dados-banner {
+    background: var(--badge-dias-bg);
+    border: 1px solid var(--badge-dias-fg);
+    border-left: 4px solid var(--badge-dias-fg);
+    border-radius: 10px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .sem-dados-icon { font-size: 32px; line-height: 1; flex-shrink: 0; }
+  .sem-dados-text { flex: 1; }
+  .sem-dados-text strong { display: block; font-size: 15px; color: var(--badge-dias-fg); margin-bottom: 5px; }
+  .sem-dados-text span { font-size: 13px; color: var(--badge-dias-fg); opacity: 0.85; }
+  .btn-criar-template {
+    background: var(--badge-dias-fg);
+    color: #0D1117;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: filter 0.2s;
+    flex-shrink: 0;
+  }
+  .btn-criar-template:hover { filter: brightness(1.15); }
+
+  /* Header template button */
+  .btn-template {
+    background: transparent;
+    color: rgba(255,255,255,0.85);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-template:hover { background: rgba(255,255,255,0.12); color: white; border-color: rgba(255,255,255,0.5); }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center; color: var(--texto-sub); font-size: 11px;
+    padding: 24px 0 32px; border-top: 1px solid var(--borda);
+    margin-top: 8px; line-height: 1.8;
+  }
+  footer strong { color: var(--azul-med); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="loading-overlay" id="loadingOverlay"><div class="spinner"></div></div>
+<div class="toast" id="toast"></div>
+<div class="svg-tooltip" id="svgTooltip"></div>
+
+<!-- HEADER -->
+<header class="header">
+  <div>
+    <h1>Dashboard de Atestados Médicos</h1>
+    <div class="subtitle" id="lastUpdate">Carregando...</div>
+  </div>
+  <div class="header-actions">
+    <button class="btn-template" id="btnTemplate" onclick="criarTemplate()">+ Nova Planilha Modelo</button>
+    <button class="btn-theme" id="btnTheme" onclick="toggleTheme()">☀️ Tema Claro</button>
+    <button class="btn-refresh" id="btnRefresh" onclick="refresh()">
+      <span>&#8635;</span> Atualizar Dados
+    </button>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- FILTERS -->
+  <div class="filters">
+    <div class="filter-group">
+      <label>Ano</label>
+      <select id="fAno" onchange="applyFilters()"><option value="">Todos</option></select>
+    </div>
+    <div class="filter-group">
+      <label>Mês</label>
+      <select id="fMes" onchange="applyFilters()">
+        <option value="">Todos</option>
+        <option value="01">Janeiro</option><option value="02">Fevereiro</option>
+        <option value="03">Março</option><option value="04">Abril</option>
+        <option value="05">Maio</option><option value="06">Junho</option>
+        <option value="07">Julho</option><option value="08">Agosto</option>
+        <option value="09">Setembro</option><option value="10">Outubro</option>
+        <option value="11">Novembro</option><option value="12">Dezembro</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Setor</label>
+      <select id="fSetor" onchange="applyFilters()"><option value="">Todos</option></select>
+    </div>
+    <div class="filter-group">
+      <label>CID</label>
+      <select id="fCID" onchange="applyFilters()"><option value="">Todos</option></select>
+    </div>
+    <div class="filter-group">
+      <label>Busca Livre</label>
+      <input type="text" id="fQ" placeholder="Nome, setor, CID..." oninput="debounceFilter()">
+    </div>
+    <button class="btn-clear" onclick="clearFilters()">✕ Limpar</button>
+  </div>
+
+  <!-- SEM DADOS BANNER -->
+  <div class="sem-dados-banner" id="semDadosBanner" style="display:none">
+    <div class="sem-dados-icon">📋</div>
+    <div class="sem-dados-text">
+      <strong>Nenhum dado encontrado em Atestados/</strong>
+      <span id="semDadosMsg">Uma planilha modelo foi criada. Preencha os dados e clique em Atualizar Dados.</span>
+    </div>
+    <button class="btn-criar-template" onclick="criarTemplate()">+ Criar Nova Planilha Modelo</button>
+  </div>
+
+  <!-- KPIs -->
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-label">Total de Atestados</div>
+      <div class="kpi-value" id="kpiTotal">-</div>
+      <div class="kpi-sub" id="kpiTotalSub">&nbsp;</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">CID Mais Frequente</div>
+      <div class="kpi-value" id="kpiCID">-</div>
+      <div class="kpi-sub" id="kpiCIDSub">&nbsp;</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Setor Líder</div>
+      <div class="kpi-value" id="kpiSetor" style="font-size:18px">-</div>
+      <div class="kpi-sub" id="kpiSetorSub">&nbsp;</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Funcionário Destaque</div>
+      <div class="kpi-value" id="kpiFunc" style="font-size:15px">-</div>
+      <div class="kpi-sub" id="kpiFuncSub">&nbsp;</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Total Dias Afastados</div>
+      <div class="kpi-value" id="kpiDias">-</div>
+      <div class="kpi-sub" id="kpiDiasSub">&nbsp;</div>
+    </div>
+  </div>
+
+  <!-- CHARTS ROW 1 -->
+  <div class="charts-row">
+    <div class="card">
+      <div class="card-title">Atestados por Setor</div>
+      <svg class="chart" id="donutChart" height="260"></svg>
+    </div>
+    <div class="card">
+      <div class="card-title">Top CIDs</div>
+      <svg class="chart" id="barCIDChart" height="260"></svg>
+    </div>
+  </div>
+
+  <!-- CHARTS ROW 2 -->
+  <div class="chart-full">
+    <div class="card">
+      <div class="card-title">Comparativo Mensal por Ano</div>
+      <svg class="chart" id="groupedBarChart" height="280"></svg>
+    </div>
+  </div>
+
+  <!-- OVERLAPS -->
+  <div class="overlaps-section">
+    <button class="overlaps-toggle" id="overlapsToggle" onclick="toggleOverlaps()">
+      <span id="overlapsIcon">▼</span>
+      Sobreposições e Inconsistências
+      <span class="badge" id="overlapsBadge">0</span>
+    </button>
+    <div class="overlaps-body" id="overlapsBody">
+      <div id="overlapsList"></div>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-section">
+    <div class="card">
+      <div class="table-toolbar">
+        <div class="info" id="tableInfo">Carregando...</div>
+        <button class="btn-csv" onclick="exportCSV()">⬇ Exportar CSV</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th onclick="sortBy('nome')">Nome <span class="sort-arrow" id="sort-nome"></span></th>
+              <th onclick="sortBy('cargo')">Cargo <span class="sort-arrow" id="sort-cargo"></span></th>
+              <th onclick="sortBy('setor')">Setor <span class="sort-arrow" id="sort-setor"></span></th>
+              <th onclick="sortBy('data')">Data <span class="sort-arrow" id="sort-data"></span></th>
+              <th onclick="sortBy('dataFim')">Até <span class="sort-arrow" id="sort-dataFim"></span></th>
+              <th onclick="sortBy('cid')">CID <span class="sort-arrow" id="sort-cid"></span></th>
+              <th onclick="sortBy('diasAfastamento')">Dias <span class="sort-arrow" id="sort-diasAfastamento"></span></th>
+              <th onclick="sortBy('arquivo')">Arquivo <span class="sort-arrow" id="sort-arquivo"></span></th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+      <div class="pagination" id="pagination"></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Dashboard de Atestados Médicos &mdash; Dados carregados do diretório <strong>Atestados/</strong><br>
+  Criado por <strong><a href="mailto:neocetara@hotmail.com" style="color:var(--azul-med);text-decoration:none">Glauco Garcia Cetara</a></strong>
+  &mdash; para <strong>Juliane Roberta Imamura</strong>
+</footer>
+
+<script>
+// ── State ─────────────────────────────────────────────────────────────────────
+let allData      = [];
+let filteredData = [];
+let resumo       = null;
+let overlaps     = [];
+let currentFilters = { ano:'', mes:'', setor:'', cid:'', q:'' };
+let currentSort    = { col:'data', dir:'asc' };
+let currentPage    = 0;
+const PAGE_SIZE    = 25;
+let debounceTimer  = null;
+let overlapsOpen   = false;
+
+// ── Colors ────────────────────────────────────────────────────────────────────
+const COLORS = ['#3B8FD4','#F0883E','#3FB950','#FF7B72','#D2A8FF',
+                '#79C0FF','#FFA657','#56D364','#FF6E96','#A5D6FF',
+                '#F0B429','#58A6FF'];
+
+// ── Theme ────────────────────────────────────────────────────────────────────
+function initTheme() {
+  const saved = localStorage.getItem('theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', saved);
+  updateThemeBtn(saved);
+}
+
+function toggleTheme() {
+  const cur  = document.documentElement.getAttribute('data-theme') || 'dark';
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  updateThemeBtn(next);
+  if (resumo) renderCharts();
+}
+
+function updateThemeBtn(theme) {
+  const btn = document.getElementById('btnTheme');
+  btn.textContent = theme === 'dark' ? '☀️ Tema Claro' : '🌙 Tema Escuro';
+}
+
+function isDark() {
+  return document.documentElement.getAttribute('data-theme') === 'dark';
+}
+
+// Theme-aware colors for SVG
+function tc(light, dark) { return isDark() ? dark : light; }
+
+// ── Tooltip ───────────────────────────────────────────────────────────────────
+const tip = {
+  el: null,
+  init() { this.el = document.getElementById('svgTooltip'); },
+  show(e, text) {
+    if (!this.el) return;
+    this.el.textContent = text;
+    this.el.classList.add('show');
+    this.move(e);
+  },
+  move(e) {
+    if (!this.el) return;
+    let x = e.clientX + 14, y = e.clientY - 38;
+    const rect = this.el.getBoundingClientRect();
+    if (x + rect.width > window.innerWidth - 10) x = e.clientX - rect.width - 14;
+    if (y < 6) y = e.clientY + 18;
+    this.el.style.left = x + 'px';
+    this.el.style.top  = y + 'px';
+  },
+  hide() { if (this.el) this.el.classList.remove('show'); }
+};
+
+document.addEventListener('mousemove', e => { if (tip.el?.classList.contains('show')) tip.move(e); });
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+async function init() {
+  showLoading(true);
+  try {
+    await Promise.all([loadResumo(), loadDados(), loadOverlaps()]);
+    renderAll();
+  } catch(e) {
+    showToast('Erro ao carregar dados: ' + e.message, true);
+  } finally {
+    showLoading(false);
+  }
+}
+
+async function refresh() {
+  const btn = document.getElementById('btnRefresh');
+  btn.classList.add('loading'); btn.disabled = true;
+  try {
+    await fetch('/api/reload', { method: 'POST' });
+    await init();
+    showToast('Dados atualizados!');
+  } finally {
+    btn.classList.remove('loading'); btn.disabled = false;
+  }
+}
+
+async function criarTemplate() {
+  const btn = document.getElementById('btnTemplate');
+  if (btn) { btn.disabled = true; btn.textContent = 'Criando...'; }
+  try {
+    const r = await fetch('/api/criar-template', { method: 'POST' });
+    const data = await r.json();
+    if (data.erro) {
+      showToast('Erro: ' + data.erro, true);
+    } else {
+      showToast(data.mensagem);
+      const msg = document.getElementById('semDadosMsg');
+      if (msg) msg.textContent = `Planilha '${data.arquivo}' criada em Atestados/. Preencha e clique em Atualizar Dados.`;
+      document.getElementById('semDadosBanner').style.display = 'flex';
+    }
+  } catch(e) {
+    showToast('Erro ao criar planilha: ' + e.message, true);
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = '+ Nova Planilha Modelo'; }
+  }
+}
+
+async function loadResumo() {
+  const r = await fetch('/api/resumo');
+  if (!r.ok) throw new Error('Falha ao carregar resumo');
+  resumo = await r.json();
+  populateFilterOptions();
+}
+
+async function loadDados() {
+  const r = await fetch('/api/dados?' + buildParams());
+  if (!r.ok) throw new Error('Falha ao carregar dados');
+  filteredData = await r.json();
+}
+
+async function loadOverlaps() {
+  const r = await fetch('/api/overlaps');
+  if (!r.ok) throw new Error('Falha ao carregar sobreposições');
+  overlaps = await r.json();
+}
+
+function buildParams() {
+  const p = new URLSearchParams();
+  if (currentFilters.ano)   p.set('ano',   currentFilters.ano);
+  if (currentFilters.mes)   p.set('mes',   currentFilters.mes);
+  if (currentFilters.setor) p.set('setor', currentFilters.setor);
+  if (currentFilters.cid)   p.set('cid',   currentFilters.cid);
+  if (currentFilters.q)     p.set('q',     currentFilters.q);
+  return p.toString();
+}
+
+// ── Filters ───────────────────────────────────────────────────────────────────
+function populateFilterOptions() {
+  if (!resumo) return;
+  const set = (id, arr, cur) => {
+    const sel = document.getElementById(id);
+    sel.innerHTML = '<option value="">Todos</option>';
+    arr.forEach(v => {
+      const o = document.createElement('option');
+      o.value = v; o.textContent = v;
+      if (v === cur) o.selected = true;
+      sel.appendChild(o);
+    });
+  };
+  set('fAno',   resumo.anos   || [], currentFilters.ano);
+  set('fSetor', resumo.setores || [], currentFilters.setor);
+  set('fCID',   resumo.cids   || [], currentFilters.cid);
+}
+
+async function applyFilters() {
+  currentFilters.ano   = document.getElementById('fAno').value;
+  currentFilters.mes   = document.getElementById('fMes').value;
+  currentFilters.setor = document.getElementById('fSetor').value;
+  currentFilters.cid   = document.getElementById('fCID').value;
+  currentFilters.q     = document.getElementById('fQ').value;
+  currentPage = 0;
+  showLoading(true);
+  try { await loadDados(); renderKPIs(); renderCharts(); renderTable(); updateLastUpdate(); }
+  finally { showLoading(false); }
+}
+
+function debounceFilter() {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(applyFilters, 380);
+}
+
+function clearFilters() {
+  ['fAno','fMes','fSetor','fCID'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('fQ').value = '';
+  currentFilters = { ano:'', mes:'', setor:'', cid:'', q:'' };
+  currentPage = 0;
+  applyFilters();
+}
+
+// ── Render all ────────────────────────────────────────────────────────────────
+function renderAll() {
+  const banner = document.getElementById('semDadosBanner');
+  if (banner) banner.style.display = (resumo && resumo.arquivosXlsx === 0) ? 'flex' : 'none';
+  renderKPIs(); renderCharts(); renderOverlaps(); renderTable(); updateLastUpdate();
+}
+
+function updateLastUpdate() {
+  document.getElementById('lastUpdate').textContent =
+    'Última atualização: ' + new Date().toLocaleString('pt-BR');
+}
+
+// ── KPIs ──────────────────────────────────────────────────────────────────────
+function renderKPIs() {
+  if (!resumo) return;
+  const total = filteredData.length;
+  const dias  = filteredData.reduce((s,a) => s + (a.diasAfastamento||0), 0);
+  const isFiltered = Object.values(currentFilters).some(v => v !== '');
+
+  document.getElementById('kpiTotal').textContent = total;
+  document.getElementById('kpiTotalSub').textContent =
+    isFiltered ? `de ${resumo.totalAtestados} total` : 'atestados registrados';
+  document.getElementById('kpiDias').textContent = dias;
+  document.getElementById('kpiDiasSub').textContent =
+    isFiltered ? `de ${resumo.totalDias} dias (todos os funcionários)` : 'soma de todos os funcionários';
+
+  let cid = resumo.cidFrequente || '-';
+  let setor = resumo.setorLider || '-';
+  let func_ = resumo.funcDestaque || '-';
+
+  if (isFiltered && filteredData.length > 0) {
+    const cnt = (field) => {
+      const m = {};
+      filteredData.forEach(a => { if (a[field]) m[a[field]] = (m[a[field]]||0)+1; });
+      const top = Object.entries(m).sort((a,b)=>b[1]-a[1])[0];
+      return top ? top[0] : '-';
+    };
+    cid = cnt('cid'); setor = cnt('setor'); func_ = cnt('nome');
+  }
+
+  document.getElementById('kpiCID').textContent    = cid;
+  document.getElementById('kpiSetor').textContent  = setor;
+  document.getElementById('kpiFunc').textContent   = func_;
+  document.getElementById('kpiCIDSub').textContent   = 'CID prevalente';
+  document.getElementById('kpiSetorSub').textContent = 'setor com mais atestados';
+  document.getElementById('kpiFuncSub').textContent  = 'maior nº de atestados';
+}
+
+// ── Charts ────────────────────────────────────────────────────────────────────
+function computeChartData() {
+  const isFiltered = Object.values(currentFilters).some(v => v !== '');
+  if (!isFiltered || !filteredData.length) {
+    return {
+      porSetor:  resumo.porSetor  || [],
+      porCID:    resumo.porCID    || [],
+      porAnoMes: resumo.porAnoMes || {}
+    };
+  }
+  const countBy = field => {
+    const m = {};
+    filteredData.forEach(a => { if (a[field]) m[a[field]] = (m[a[field]]||0)+1; });
+    return Object.entries(m).map(([key,value]) => ({key,value})).sort((a,b) => b.value - a.value);
+  };
+  const porAnoMes = {};
+  filteredData.forEach(a => {
+    if (!a.data) return;
+    const p = a.data.split('-');
+    if (p.length < 2) return;
+    const ano = p[0], mes = p[1];
+    if (!porAnoMes[ano]) porAnoMes[ano] = {};
+    porAnoMes[ano][mes] = (porAnoMes[ano][mes]||0) + 1;
+  });
+  return { porSetor: countBy('setor'), porCID: countBy('cid').slice(0,10), porAnoMes };
+}
+
+function renderCharts() {
+  if (!resumo) return;
+  const { porSetor, porCID, porAnoMes } = computeChartData();
+  drawDonut('donutChart', porSetor);
+  drawHBar('barCIDChart', porCID);
+  drawGroupedBar('groupedBarChart', porAnoMes);
+}
+
+// ── SVG helpers ───────────────────────────────────────────────────────────────
+function svgEl(tag) { return document.createElementNS('http://www.w3.org/2000/svg', tag); }
+
+function addText(svg, x, y, txt, size, color, weight, anchor) {
+  const el = svgEl('text');
+  el.setAttribute('x', x); el.setAttribute('y', y);
+  el.setAttribute('font-size', size || 11);
+  el.setAttribute('fill', color || tc('#333','#C9D1D9'));
+  el.setAttribute('font-weight', weight || 'normal');
+  el.setAttribute('text-anchor', anchor || 'middle');
+  el.setAttribute('font-family', 'Segoe UI,Tahoma,sans-serif');
+  el.textContent = txt;
+  svg.appendChild(el);
+  return el;
+}
+
+function addRect(svg, x, y, w, h, fill, rx, tipText) {
+  const el = svgEl('rect');
+  el.setAttribute('x', x); el.setAttribute('y', y);
+  el.setAttribute('width', Math.max(w,0)); el.setAttribute('height', Math.max(h,0));
+  el.setAttribute('fill', fill); el.setAttribute('rx', rx||3);
+  if (tipText) attachTip(el, tipText);
+  svg.appendChild(el);
+  return el;
+}
+
+function addPath(svg, d, fill, tipText) {
+  const el = svgEl('path');
+  el.setAttribute('d', d); el.setAttribute('fill', fill);
+  el.setAttribute('stroke', isDark() ? '#0D1117' : '#fff');
+  el.setAttribute('stroke-width', '2');
+  if (tipText) attachTip(el, tipText);
+  svg.appendChild(el);
+  return el;
+}
+
+function attachTip(el, text) {
+  el.addEventListener('mouseenter', e => { tip.show(e, text); });
+  el.addEventListener('mouseleave', () => { tip.hide(); });
+}
+
+// ── Donut chart ───────────────────────────────────────────────────────────────
+function drawDonut(svgId, data) {
+  const svg = document.getElementById(svgId);
+  const W = svg.parentElement.clientWidth || 420;
+  const H = 260;
+  const cx = W * 0.36, cy = H / 2;
+  const r = Math.min(cx, cy) - 18, ri = r * 0.54;
+
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.innerHTML = '';
+
+  if (!data?.length) { addText(svg, W/2, H/2, 'Sem dados', 13, '#888'); return; }
+  const total = data.reduce((s,d) => s + d.value, 0);
+  if (!total) { addText(svg, W/2, H/2, 'Sem dados', 13, '#888'); return; }
+
+  let startAngle = -Math.PI / 2;
+  const items = data.slice(0, 10);
+
+  items.forEach((d, i) => {
+    const angle    = (d.value / total) * 2 * Math.PI;
+    const endAngle = startAngle + angle;
+    const pct      = Math.round(d.value / total * 100);
+    const x1  = cx + r  * Math.cos(startAngle), y1  = cy + r  * Math.sin(startAngle);
+    const x2  = cx + r  * Math.cos(endAngle),   y2  = cy + r  * Math.sin(endAngle);
+    const xi1 = cx + ri * Math.cos(endAngle),   yi1 = cy + ri * Math.sin(endAngle);
+    const xi2 = cx + ri * Math.cos(startAngle), yi2 = cy + ri * Math.sin(startAngle);
+    const large = angle > Math.PI ? 1 : 0;
+    const d_attr = `M${x1},${y1} A${r},${r},0,${large},1,${x2},${y2} L${xi1},${yi1} A${ri},${ri},0,${large},0,${xi2},${yi2} Z`;
+    addPath(svg, d_attr, COLORS[i % COLORS.length],
+      `${d.key}: ${d.value} atestados (${pct}%)`);
+
+    if (angle > 0.22) {
+      const midA = startAngle + angle / 2;
+      addText(svg, cx + r*0.74*Math.cos(midA), cy + r*0.74*Math.sin(midA)+4,
+        `${pct}%`, 10, 'white', '700');
+    }
+    startAngle = endAngle;
+  });
+
+  // Center
+  addText(svg, cx, cy - 8, String(total), 24, tc('#1F4E79','#79C0FF'), '700');
+  addText(svg, cx, cy + 14, 'total', 11, tc('#888','#8B949E'));
+
+  // Legend
+  const lx = W * 0.73, lStep = 23;
+  const lTop = H/2 - (items.length * lStep)/2 + 4;
+  items.forEach((d, i) => {
+    const ly = lTop + i * lStep;
+    const sq = svgEl('rect');
+    sq.setAttribute('x', lx); sq.setAttribute('y', ly - 10);
+    sq.setAttribute('width', 12); sq.setAttribute('height', 12);
+    sq.setAttribute('fill', COLORS[i % COLORS.length]); sq.setAttribute('rx', 2);
+    svg.appendChild(sq);
+    addText(svg, lx + 16, ly, `${d.key} (${d.value})`, 11, tc('#333','#C9D1D9'), '400', 'start');
+  });
+}
+
+// ── Horizontal bar chart ──────────────────────────────────────────────────────
+function drawHBar(svgId, data) {
+  const svg = document.getElementById(svgId);
+  const W = svg.parentElement.clientWidth || 400;
+  const padL = 68, padR = 42, padT = 8, padB = 8;
+  const barH = 22, gap = 9;
+  const items = data.slice(0, 10);
+  const H = padT + items.length * (barH + gap) + padB;
+
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.setAttribute('height', H);
+  svg.innerHTML = '';
+
+  if (!items.length) { addText(svg, W/2, H/2, 'Sem dados', 13, '#888'); return; }
+
+  const maxVal = Math.max(...items.map(d => d.value), 1);
+  const availW = W - padL - padR;
+
+  items.forEach((d, i) => {
+    const y = padT + i * (barH + gap);
+    const bw = (d.value / maxVal) * availW;
+    addText(svg, padL - 7, y + barH/2 + 4, d.key, 11, tc('#444','#C9D1D9'), '500', 'end');
+    addRect(svg, padL, y, bw, barH, COLORS[i % COLORS.length], 3,
+      `${d.key}: ${d.value} atestados`);
+    addText(svg, padL + bw + 6, y + barH/2 + 4, String(d.value), 11, tc('#555','#8B949E'), '600', 'start');
+  });
+}
+
+// ── Grouped bar chart ─────────────────────────────────────────────────────────
+function drawGroupedBar(svgId, porAnoMes) {
+  const svg = document.getElementById(svgId);
+  const W = svg.parentElement.clientWidth || 800;
+  const padL = 38, padR = 20, padT = 20, padB = 52;
+  const H = 280;
+
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.innerHTML = '';
+
+  const months  = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+  const mLabels = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  const anos    = Object.keys(porAnoMes).sort();
+  if (!anos.length) { addText(svg, W/2, H/2, 'Sem dados', 13, '#888'); return; }
+
+  const chartW = W - padL - padR;
+  const chartH = H - padT - padB;
+  const groupW = chartW / 12;
+  const barW   = Math.min(groupW / (anos.length + 1), 22);
+  const allVals = anos.flatMap(a => months.map(m => (porAnoMes[a]||{})[m]||0));
+  const maxVal  = Math.max(...allVals, 1);
+  const gridC   = tc('#E0E0E0','#21262D');
+  const textC   = tc('#888','#8B949E');
+
+  // Y gridlines
+  [0, 0.25, 0.5, 0.75, 1].forEach(frac => {
+    const y = padT + chartH * (1 - frac);
+    const val = Math.round(maxVal * frac);
+    const line = svgEl('line');
+    line.setAttribute('x1', padL); line.setAttribute('x2', W - padR);
+    line.setAttribute('y1', y);    line.setAttribute('y2', y);
+    line.setAttribute('stroke', gridC); line.setAttribute('stroke-width', 1);
+    svg.appendChild(line);
+    addText(svg, padL - 5, y + 4, String(val), 10, textC, '400', 'end');
+  });
+
+  // Bars
+  months.forEach((mo, mi) => {
+    const gx = padL + mi * groupW + groupW/2 - (anos.length * barW)/2;
+    anos.forEach((ano, ai) => {
+      const val = (porAnoMes[ano]||{})[mo] || 0;
+      const bh  = (val / maxVal) * chartH;
+      const x   = gx + ai * barW;
+      const y   = padT + chartH - bh;
+      addRect(svg, x, y, barW - 2, bh, COLORS[ai % COLORS.length], 2,
+        `${ano} — ${mLabels[mi]}: ${val} atestado${val!==1?'s':''}`);
+      if (val > 0)
+        addText(svg, x + (barW-2)/2, y - 3, String(val), 9, textC, '600');
+    });
+    addText(svg, padL + mi * groupW + groupW/2, H - padB + 16, mLabels[mi], 11, tc('#333','#C9D1D9'));
+  });
+
+  // Legend
+  const legY = H - padB + 34;
+  anos.forEach((ano, i) => {
+    const lx = padL + i * 90;
+    const sq = svgEl('rect');
+    sq.setAttribute('x', lx); sq.setAttribute('y', legY - 10);
+    sq.setAttribute('width', 12); sq.setAttribute('height', 12);
+    sq.setAttribute('fill', COLORS[i % COLORS.length]); sq.setAttribute('rx', 2);
+    svg.appendChild(sq);
+    addText(svg, lx + 16, legY, ano, 11, tc('#333','#C9D1D9'), '600', 'start');
+  });
+}
+
+// ── Overlaps ──────────────────────────────────────────────────────────────────
+function renderOverlaps() {
+  const toggle = document.getElementById('overlapsToggle');
+  const badge  = document.getElementById('overlapsBadge');
+  const list   = document.getElementById('overlapsList');
+  const n = (overlaps || []).length;
+  badge.textContent = String(n);
+
+  if (n === 0) {
+    toggle.classList.add('none');
+    document.getElementById('overlapsIcon').textContent = '✓';
+    list.innerHTML = '<p style="color:var(--verde);padding:12px 0">Nenhuma sobreposição ou inconsistência detectada.</p>';
+  } else {
+    toggle.classList.remove('none');
+    document.getElementById('overlapsIcon').textContent = '▼';
+    const labels = {
+      duplicado_exato:          'Duplicado Exato',
+      mesmo_dia_cid_diferente:  'Mesmo Dia — CID Diferente',
+      periodo_sobreposto:       'Período Sobreposto'
+    };
+    list.innerHTML = overlaps.map(ov => {
+      const tags = (ov.registros||[]).map(r =>
+        `<span class="overlap-tag">${esc(r.arquivo)} / ${esc(r.aba)} #${r.id}</span>`
+      ).join('');
+      return `<div class="overlap-card ${ov.tipo}">
+        <div class="overlap-tipo ${ov.tipo}">${labels[ov.tipo]||ov.tipo}</div>
+        <div class="overlap-desc">${esc(ov.descricao)}</div>
+        <div class="overlap-records">${tags}</div>
+      </div>`;
+    }).join('');
+  }
+}
+
+function toggleOverlaps() {
+  overlapsOpen = !overlapsOpen;
+  document.getElementById('overlapsBody').classList.toggle('open', overlapsOpen);
+  if (overlapsOpen) document.getElementById('overlapsIcon').textContent = '▲';
+  else if (overlaps.length > 0) document.getElementById('overlapsIcon').textContent = '▼';
+}
+
+// ── Table ─────────────────────────────────────────────────────────────────────
+function sortBy(col) {
+  if (currentSort.col === col) currentSort.dir = currentSort.dir === 'asc' ? 'desc' : 'asc';
+  else { currentSort.col = col; currentSort.dir = 'asc'; }
+  currentPage = 0;
+  renderTable();
+}
+
+function getSorted(data) {
+  const {col, dir} = currentSort;
+  return [...data].sort((a, b) => {
+    let va = a[col], vb = b[col];
+    if (col === 'diasAfastamento') { va = +va; vb = +vb; }
+    else { va = String(va||'').toLowerCase(); vb = String(vb||'').toLowerCase(); }
+    if (va < vb) return dir === 'asc' ? -1 : 1;
+    if (va > vb) return dir === 'asc' ?  1 : -1;
+    return 0;
+  });
+}
+
+function renderTable() {
+  ['nome','cargo','setor','data','dataFim','cid','diasAfastamento','arquivo'].forEach(c => {
+    const el = document.getElementById('sort-' + c);
+    if (el) el.textContent = currentSort.col===c ? (currentSort.dir==='asc'?' ▲':' ▼') : ' ◇';
+  });
+
+  const sorted = getSorted(filteredData);
+  const total  = sorted.length;
+  const pages  = Math.ceil(total / PAGE_SIZE);
+  if (currentPage >= pages) currentPage = Math.max(0, pages - 1);
+  const start  = currentPage * PAGE_SIZE;
+  const page   = sorted.slice(start, start + PAGE_SIZE);
+
+  document.getElementById('tableInfo').textContent =
+    total === 0
+      ? 'Nenhum registro encontrado'
+      : `Exibindo ${start+1}–${Math.min(start+PAGE_SIZE, total)} de ${total} registro(s)`;
+
+  const tbody = document.getElementById('tableBody');
+  if (!page.length) {
+    tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;padding:32px;color:var(--texto-sub)">Nenhum registro encontrado</td></tr>`;
+  } else {
+    tbody.innerHTML = page.map(a => {
+      const alto = a.diasAfastamento >= 7 ? ' alto' : '';
+      return `<tr>
+        <td>${esc(a.nome)}</td>
+        <td style="color:var(--texto-sub)">${esc(a.cargo)}</td>
+        <td>${esc(a.setor)}</td>
+        <td>${fmtDate(a.data)}</td>
+        <td style="color:var(--texto-sub)">${fmtDate(a.dataFim)}</td>
+        <td><span class="badge-cid">${esc(a.cid)}</span></td>
+        <td><span class="badge-dias${alto}">${a.diasAfastamento}</span></td>
+        <td style="font-size:11px;color:var(--texto-sub)">${esc(a.arquivo)}</td>
+      </tr>`;
+    }).join('');
+  }
+  renderPagination(pages);
+}
+
+function renderPagination(pages) {
+  const pag = document.getElementById('pagination');
+  if (pages <= 1) { pag.innerHTML = ''; return; }
+  let html = `<button class="page-btn" onclick="goPage(${currentPage-1})" ${currentPage===0?'disabled':''}>&laquo;</button>`;
+  for (let i = 0; i < pages; i++) {
+    if (pages > 10 && Math.abs(i - currentPage) > 2 && i !== 0 && i !== pages-1) {
+      if (i === 1 || i === pages-2) html += '<span style="padding:4px;color:var(--texto-sub)">…</span>';
+      continue;
+    }
+    html += `<button class="page-btn ${i===currentPage?'active':''}" onclick="goPage(${i})">${i+1}</button>`;
+  }
+  html += `<button class="page-btn" onclick="goPage(${currentPage+1})" ${currentPage===pages-1?'disabled':''}>&raquo;</button>`;
+  pag.innerHTML = html;
+}
+
+function goPage(p) {
+  currentPage = p;
+  renderTable();
+  const sec = document.querySelector('.table-section');
+  if (sec) window.scrollTo({ top: sec.offsetTop - 80, behavior: 'smooth' });
+}
+
+// ── CSV ───────────────────────────────────────────────────────────────────────
+function exportCSV() { window.location = '/api/dados?' + buildParams() + '&format=csv'; }
+
+// ── Utils ─────────────────────────────────────────────────────────────────────
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function fmtDate(s) {
+  if (!s) return '-';
+  const p = s.split('-');
+  return p.length === 3 ? `${p[2]}/${p[1]}/${p[0]}` : s;
+}
+function showLoading(on) { document.getElementById('loadingOverlay').classList.toggle('show', on); }
+function showToast(msg, isError) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (isError ? ' error' : '');
+  setTimeout(() => { t.className = 'toast'; }, 3500);
+}
+
+// ── Boot ──────────────────────────────────────────────────────────────────────
+window.addEventListener('load', () => {
+  tip.init();
+  initTheme();
+  init();
+});
+window.addEventListener('resize', () => { if (resumo) renderCharts(); });
+</script>
+</body>
+</html>
