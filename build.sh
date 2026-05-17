@@ -5,6 +5,8 @@ cd "$(dirname "$0")"
 BINARY="dashboard-atestados"
 DIST="dist"
 ASSETS="assets"
+VERSION="1.0.0"
+LDFLAGS="-s -w -X main.version=${VERSION}"
 
 mkdir -p "$DIST"
 
@@ -22,13 +24,13 @@ fi
 
 # ── Compile ───────────────────────────────────────────────────────────────────
 echo "Building darwin/arm64..."
-CGO_ENABLED=0 GOOS=darwin  GOARCH=arm64 go build -ldflags="-s -w" -o "$DIST/$BINARY-darwin-arm64" .
+CGO_ENABLED=0 GOOS=darwin  GOARCH=arm64 go build -ldflags="${LDFLAGS}" -o "$DIST/$BINARY-darwin-arm64" .
 
 echo "Building darwin/amd64..."
-CGO_ENABLED=0 GOOS=darwin  GOARCH=amd64 go build -ldflags="-s -w" -o "$DIST/$BINARY-darwin-amd64" .
+CGO_ENABLED=0 GOOS=darwin  GOARCH=amd64 go build -ldflags="${LDFLAGS}" -o "$DIST/$BINARY-darwin-amd64" .
 
 echo "Building windows/amd64..."
-CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags="-s -w" -o "$DIST/$BINARY-windows-amd64.exe" .
+CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags="${LDFLAGS}" -o "$DIST/$BINARY-windows-amd64.exe" .
 
 # ── macOS .app bundles ────────────────────────────────────────────────────────
 make_app() {

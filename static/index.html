@@ -602,7 +602,8 @@
 </div>
 
 <footer>
-  Dashboard de Atestados Médicos &mdash; Dados carregados do diretório <strong>Atestados/</strong><br>
+  Dashboard de Atestados Médicos <span id="footerVersion" style="opacity:0.55;font-size:0.85em"></span>
+  &mdash; Dados carregados do diretório <strong>Atestados/</strong><br>
   Criado por <strong><a href="mailto:neocetara@hotmail.com" style="color:var(--azul-med);text-decoration:none">Glauco Garcia Cetara</a></strong>
   &mdash; para <strong>Juliane Roberta Imamura</strong>
 </footer>
@@ -728,6 +729,8 @@ async function loadResumo() {
   if (!r.ok) throw new Error('Falha ao carregar resumo');
   resumo = await r.json();
   populateFilterOptions();
+  const el = document.getElementById('footerVersion');
+  if (el && resumo.version && resumo.version !== 'dev') el.textContent = `v${resumo.version}`;
 }
 
 async function loadDados() {

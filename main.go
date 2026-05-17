@@ -25,6 +25,8 @@ import (
 //go:embed static
 var staticFiles embed.FS
 
+var version = "dev" // overridden at build time via -ldflags "-X main.version=x.y.z"
+
 // ─── Global mutable state ──────────────────────────────────────────────────────
 
 var (
@@ -84,6 +86,7 @@ type Resumo struct {
 	Nomes              []string                  `json:"nomes"`
 	DiretorioAtestados string                    `json:"diretorioAtestados"`
 	ArquivosXlsx       int                       `json:"arquivosXlsx"`
+	Version            string                    `json:"version"`
 }
 
 // ─── Date parsing ──────────────────────────────────────────────────────────────
@@ -558,6 +561,7 @@ func apiResumo(w http.ResponseWriter, r *http.Request) {
 	resumo := buildResumo(dados)
 	resumo.DiretorioAtestados = dir
 	resumo.ArquivosXlsx = countXlsxFiles(dir)
+	resumo.Version = version
 	json.NewEncoder(w).Encode(resumo)
 }
 
