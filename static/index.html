@@ -983,7 +983,7 @@ function drawDonut(svgId, data) {
 function drawHBar(svgId, data) {
   const svg = document.getElementById(svgId);
   const W = svg.parentElement.clientWidth || 400;
-  const padL = 68, padR = 42, padT = 8, padB = 8;
+  const padL = 200, padR = 42, padT = 8, padB = 8;
   const barH = 22, gap = 9;
   const items = data.slice(0, 10);
   const H = padT + items.length * (barH + gap) + padB;
@@ -1000,7 +1000,8 @@ function drawHBar(svgId, data) {
   items.forEach((d, i) => {
     const y = padT + i * (barH + gap);
     const bw = (d.value / maxVal) * availW;
-    addText(svg, padL - 7, y + barH/2 + 4, d.key, 11, tc('#444','#C9D1D9'), '500', 'end');
+    const label = d.key.length > 26 ? d.key.slice(0, 25) + '…' : d.key;
+    addText(svg, padL - 7, y + barH/2 + 4, label, 11, tc('#444','#C9D1D9'), '500', 'end');
     addRect(svg, padL, y, bw, barH, COLORS[i % COLORS.length], 3,
       `${d.key}: ${d.value} atestados`);
     addText(svg, padL + bw + 6, y + barH/2 + 4, String(d.value), 11, tc('#555','#8B949E'), '600', 'start');

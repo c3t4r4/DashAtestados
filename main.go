@@ -92,11 +92,17 @@ type Resumo struct {
 // ─── Date parsing ──────────────────────────────────────────────────────────────
 
 var dateFmts = []string{
-	"02/01/2006",
-	"2006-01-02",
-	"01/02/2006",
-	"2006/01/02",
-	"02-01-2006",
+	"02/01/2006",          // Brazilian DD/MM/YYYY
+	"2006-01-02",          // ISO 8601
+	"01/02/2006",          // US MM/DD/YYYY
+	"2006/01/02",          // YYYY/MM/DD
+	"02-01-2006",          // DD-MM-YYYY
+	"02/01/06",            // Brazilian DD/MM/YY (Excel built-in format 14)
+	"01/02/06",            // US MM/DD/YY
+	"2/1/2006",            // no-leading-zero D/M/YYYY
+	"1/2/2006",            // no-leading-zero M/D/YYYY
+	"02.01.2006",          // dot-separated DD.MM.YYYY
+	"2006-01-02 15:04:05", // ISO with time component
 }
 
 func parseDate(s string) (time.Time, error) {
@@ -139,7 +145,7 @@ func loadAtestados(dir string) ([]Atestado, error) {
 			return nil
 		}
 
-		f, err := excelize.OpenFile(path)
+		f, err := excelize.OpenFile(path, excelize.Options{RawCellValue: true})
 		if err != nil {
 			log.Printf("warn: cannot open %s: %v", path, err)
 			return nil
