@@ -934,27 +934,48 @@ function drawDonut(svgId, data) {
   svg.innerHTML = '';
 
   if (!data?.length) { addText(svg, W/2, H/2, 'Sem dados', 13, '#888'); return; }
-  const total = data.reduce((s,d) => s + d.value, 0);
-  if (!total) { addText(svg, W/2, H/2, 'Sem dados', 13, '#888'); return; }
+  const grandTotal = data.reduce((s, d) => s + d.value, 0);
+  if (!grandTotal) { addText(svg, W/2, H/2, 'Sem dados', 13, '#888'); return; }
+
+  // Cap at 9 slices; overflow sectors become "Outros" so the circle always closes
+  const MAX = 9;
+  const items = data.length > MAX
+    ? [...data.slice(0, MAX), { key: 'Outros', value: data.slice(MAX).reduce((s, d) => s + d.value, 0) }]
+    : data.slice();
+
+  // Largest remainder method: percentages always sum to exactly 100
+  const raw = items.map(d => (d.value / grandTotal) * 100);
+  const floors = raw.map(v => Math.floor(v));
+  let rem = 100 - floors.reduce((s, v) => s + v, 0);
+  const order = raw.map((v, i) => ({ i, r: v - floors[i] })).sort((a, b) => b.r - a.r);
+  const pcts = [...floors];
+  for (let k = 0; k < rem; k++) pcts[order[k].i]++;
 
   let startAngle = -Math.PI / 2;
-  const items = data.slice(0, 10);
 
   items.forEach((d, i) => {
-    const angle    = (d.value / total) * 2 * Math.PI;
+    const angle    = (d.value / grandTotal) * 2 * Math.PI;
     const endAngle = startAngle + angle;
-    const pct      = Math.round(d.value / total * 100);
+    const pct      = pcts[i];
     const x1  = cx + r  * Math.cos(startAngle), y1  = cy + r  * Math.sin(startAngle);
     const x2  = cx + r  * Math.cos(endAngle),   y2  = cy + r  * Math.sin(endAngle);
     const xi1 = cx + ri * Math.cos(endAngle),   yi1 = cy + ri * Math.sin(endAngle);
     const xi2 = cx + ri * Math.cos(startAngle), yi2 = cy + ri * Math.sin(startAngle);
     const large = angle > Math.PI ? 1 : 0;
     const d_attr = `M${x1},${y1} A${r},${r},0,${large},1,${x2},${y2} L${xi1},${yi1} A${ri},${ri},0,${large},0,${xi2},${yi2} Z`;
-    addPath(svg, d_attr, COLORS[i % COLORS.length],
+    const path = addPath(svg, d_attr, COLORS[i % COLORS.length],
       `${d.key}: ${d.value} atestados (${pct}%)`);
 
+    // Hover: push slice outward from center
+    const midA = startAngle + angle / 2;
+    const tx = +(Math.cos(midA) * 6).toFixed(2);
+    const ty = +(Math.sin(midA) * 6).toFixed(2);
+    path.style.transition = 'transform 0.15s ease';
+    path.style.cursor = 'pointer';
+    path.addEventListener('mouseenter', () => path.setAttribute('transform', `translate(${tx},${ty})`));
+    path.addEventListener('mouseleave', () => path.removeAttribute('transform'));
+
     if (angle > 0.22) {
-      const midA = startAngle + angle / 2;
       addText(svg, cx + r*0.74*Math.cos(midA), cy + r*0.74*Math.sin(midA)+4,
         `${pct}%`, 10, 'white', '700');
     }
@@ -962,7 +983,7 @@ function drawDonut(svgId, data) {
   });
 
   // Center
-  addText(svg, cx, cy - 8, String(total), 24, tc('#1F4E79','#79C0FF'), '700');
+  addText(svg, cx, cy - 8, String(grandTotal), 24, tc('#1F4E79','#79C0FF'), '700');
   addText(svg, cx, cy + 14, 'total', 11, tc('#888','#8B949E'));
 
   // Legend
@@ -974,8 +995,14 @@ function drawDonut(svgId, data) {
     sq.setAttribute('x', lx); sq.setAttribute('y', ly - 10);
     sq.setAttribute('width', 12); sq.setAttribute('height', 12);
     sq.setAttribute('fill', COLORS[i % COLORS.length]); sq.setAttribute('rx', 2);
+    sq.style.cursor = 'pointer';
     svg.appendChild(sq);
-    addText(svg, lx + 16, ly, `${d.key} (${d.value})`, 11, tc('#333','#C9D1D9'), '400', 'start');
+    const txt = addText(svg, lx + 16, ly, `${d.key} (${d.value})`, 11, tc('#333','#C9D1D9'), '400', 'start');
+    txt.style.cursor = 'pointer';
+    [sq, txt].forEach(el => {
+      el.addEventListener('mouseenter', () => txt.setAttribute('font-weight', '700'));
+      el.addEventListener('mouseleave', () => txt.setAttribute('font-weight', '400'));
+    });
   });
 }
 
@@ -1002,8 +1029,12 @@ function drawHBar(svgId, data) {
     const bw = (d.value / maxVal) * availW;
     const label = d.key.length > 26 ? d.key.slice(0, 25) + '…' : d.key;
     addText(svg, padL - 7, y + barH/2 + 4, label, 11, tc('#444','#C9D1D9'), '500', 'end');
-    addRect(svg, padL, y, bw, barH, COLORS[i % COLORS.length], 3,
+    const bar = addRect(svg, padL, y, bw, barH, COLORS[i % COLORS.length], 3,
       `${d.key}: ${d.value} atestados`);
+    bar.style.transition = 'filter 0.15s ease';
+    bar.style.cursor = 'pointer';
+    bar.addEventListener('mouseenter', () => { bar.style.filter = 'brightness(1.25)'; });
+    bar.addEventListener('mouseleave', () => { bar.style.filter = ''; });
     addText(svg, padL + bw + 6, y + barH/2 + 4, String(d.value), 11, tc('#555','#8B949E'), '600', 'start');
   });
 }

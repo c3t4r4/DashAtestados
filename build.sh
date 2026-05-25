@@ -5,7 +5,13 @@ cd "$(dirname "$0")"
 BINARY="dashboard-atestados"
 DIST="dist"
 ASSETS="assets"
-VERSION="1.0.0"
+# ── Lê e incrementa versão ────────────────────────────────────────────────────
+CURRENT=$(cat VERSION | tr -d '[:space:]')
+IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT"
+PATCH=$((PATCH + 1))
+VERSION="${MAJOR}.${MINOR}.${PATCH}"
+echo "$VERSION" > VERSION
+echo "Versão: v${CURRENT} → v${VERSION}"
 LDFLAGS="-s -w -X main.version=${VERSION}"
 
 mkdir -p "$DIST"
@@ -64,8 +70,8 @@ LAUNCHER
   <key>CFBundleName</key>          <string>Dashboard Atestados</string>
   <key>CFBundleDisplayName</key>   <string>Dashboard Atestados</string>
   <key>CFBundlePackageType</key>   <string>APPL</string>
-  <key>CFBundleShortVersionString</key><string>1.0</string>
-  <key>CFBundleVersion</key>       <string>1</string>
+  <key>CFBundleShortVersionString</key><string>${VERSION}</string>
+  <key>CFBundleVersion</key>       <string>${VERSION}</string>
   <key>LSMinimumSystemVersion</key><string>10.13</string>
   <key>NSHighResolutionCapable</key><true/>
 </dict>
