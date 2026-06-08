@@ -33,6 +33,7 @@ var (
 	mu            sync.RWMutex
 	dadosGlobal   []Atestado
 	overlapGlobal []Overlap
+	avisosGlobal  []string
 	dirGlobal     string
 )
 
@@ -87,6 +88,7 @@ type Resumo struct {
 	DiretorioAtestados string                    `json:"diretorioAtestados"`
 	ArquivosXlsx       int                       `json:"arquivosXlsx"`
 	Version            string                    `json:"version"`
+	Avisos             []string                  `json:"avisos,omitempty"`
 }
 
 // ─── Date parsing ──────────────────────────────────────────────────────────────
@@ -126,8 +128,9 @@ func parseDate(s string) (time.Time, error) {
 
 // ─── Load data ─────────────────────────────────────────────────────────────────
 
-func loadAtestados(dir string) ([]Atestado, error) {
+func loadAtestados(dir string) ([]Atestado, []string, error) {
 	var all []Atestado
+	var avisos []string
 	nextID := 1
 
 	err := filepath.Walk(dir, func(path string, info fs.FileInfo, err error) error {
@@ -196,7 +199,9 @@ func loadAtestados(dir string) ([]Atestado, error) {
 
 				t, err := parseDate(dataStr)
 				if err != nil {
-					log.Printf("warn: row %d in %s/%s: %v", rowIdx+1, name, sheet, err)
+					msg := fmt.Sprintf("Linha %d em %s/%s: data inválida '%s'", rowIdx+1, name, sheet, dataStr)
+					log.Printf("warn: %s", msg)
+					avisos = append(avisos, msg)
 					continue
 				}
 
@@ -235,7 +240,7 @@ func loadAtestados(dir string) ([]Atestado, error) {
 		return nil
 	})
 
-	return all, err
+	return all, avisos, err
 }
 
 // ─── Overlap detection ─────────────────────────────────────────────────────────
@@ -309,8 +314,12 @@ func buildResumo(dados []Atestado) Resumo {
 
 	for _, a := range dados {
 		totalDias += a.DiasAfastamento
+		setor := a.Setor
+		if setor == "" {
+			setor = "Sem Setor"
+		}
+		setorCount[setor]++
 		if a.Setor != "" {
-			setorCount[a.Setor]++
 			setoresSet[a.Setor] = true
 		}
 		if a.CID != "" {
@@ -536,7 +545,7 @@ func reloadData() error {
 	dir := dirGlobal
 	mu.RUnlock()
 
-	newDados, err := loadAtestados(dir)
+	newDados, newAvisos, err := loadAtestados(dir)
 	if err != nil {
 		return err
 	}
@@ -545,6 +554,7 @@ func reloadData() error {
 	mu.Lock()
 	dadosGlobal = newDados
 	overlapGlobal = newOverlaps
+	avisosGlobal = newAvisos
 	mu.Unlock()
 
 	log.Printf("Recarregados %d registros", len(newDados))
@@ -563,11 +573,13 @@ func apiResumo(w http.ResponseWriter, r *http.Request) {
 	mu.RLock()
 	dados := dadosGlobal
 	dir := dirGlobal
+	avisos := avisosGlobal
 	mu.RUnlock()
 	resumo := buildResumo(dados)
 	resumo.DiretorioAtestados = dir
 	resumo.ArquivosXlsx = countXlsxFiles(dir)
 	resumo.Version = version
+	resumo.Avisos = avisos
 	json.NewEncoder(w).Encode(resumo)
 }
 
@@ -752,7 +764,7 @@ func main() {
 	dirGlobal = dir
 	log.Printf("Diretório de atestados: %s", dir)
 
-	dados, err := loadAtestados(dir)
+	dados, avisos, err := loadAtestados(dir)
 	if err != nil {
 		log.Fatalf("Erro ao carregar atestados: %v", err)
 	}
@@ -768,6 +780,7 @@ func main() {
 	}
 
 	dadosGlobal = dados
+	avisosGlobal = avisos
 	overlapGlobal = detectOverlaps(dados)
 	log.Printf("Detectadas %d sobreposições", len(overlapGlobal))
 
